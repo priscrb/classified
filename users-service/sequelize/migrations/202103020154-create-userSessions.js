@@ -1,30 +1,25 @@
 module.exports.up = (queryInterface, DataTypes) => {
   return queryInterface.createTable(
-    'listings',
+    'userSessions',
     {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.UUID,
       },
-      title: {
+      userId: {
         allowNull: false,
-        type: DataTypes.STRING,
+        references: {
+          key: 'id',
+          model: 'users',
+        },
+        type: DataTypes.UUID,
       },
-      description: {
+      expiresAt: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
       },
       createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      deletedAt: {
         allowNull: false,
         type: DataTypes.DATE,
       },
@@ -34,3 +29,6 @@ module.exports.up = (queryInterface, DataTypes) => {
     },
   );
 };
+
+module.exports.down = queryInterface =>
+  queryInterface.dropTable('userSessions');
