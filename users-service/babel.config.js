@@ -1,6 +1,13 @@
 module.exports = {
   plugins: [
-    ["module-resolver", {alias: { "root": "./src"}}]
+    [
+      "module-resolver",
+      {
+        alias: {
+          "#root": "./src"
+        }
+      }
+    ]
   ],
   presets: [
     [
@@ -12,4 +19,4 @@ module.exports = {
       }
     ]
   ]
-}
+};
