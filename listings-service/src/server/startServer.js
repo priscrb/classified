@@ -4,7 +4,7 @@ import express from 'express';
 
 import accessEnv from '#root/helpers/accessEnv';
 
-// import setupRoutes from './routes';
+import setupRoutes from './routes';
 
 const PORT = accessEnv('PORT', 7100);
 
@@ -23,10 +23,10 @@ app.use(
       'X-Password-Expired',
     ],
     optionsSuccessStatus: 200,
-  }),
+  })
 );
 
-// setupRoutes(app);
+setupRoutes(app);
 
 app.use((err, req, res, next) => {
   return res.status(500).json({
